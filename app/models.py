@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 class Book(models.Model):
     title = models.TextField()
@@ -9,6 +10,6 @@ class Book(models.Model):
     description = models.TextField()
 
 class Transaction(models.Model):
-    datetime = models.DateTimeField()
-    action = models.BooleanField()
+    datetime = models.DateField(datetime.now())
+    action = models.TextField()
     book = models.ForeignKey(Book, on_delete=models.PROTECT)
